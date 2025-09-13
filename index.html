@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Friends Concert Calendar</title>
+  <link rel="icon" href="assets/favicon.svg" />
+
+  <!-- FullCalendar -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="title">
+      <h1>🎤 Friends Concert Calendar</h1>
+      <p class="tagline">Plan shows, track who’s going, and keep the memories alive.</p>
+    </div>
+    <nav class="actions">
+      <a id="editSheetLink" class="btn" href="#" target="_blank" rel="noopener">➕ Add / Update Events</a>
+      <button id="refreshBtn" class="btn" type="button">⟳ Refresh</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="calendar"></div>
+  </main>
+
+  <!-- Modal -->
+  <div id="eventModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
+      <h2 id="mTitle"></h2>
+      <div class="meta-grid">
+        <div><strong>Date</strong><div id="mDate"></div></div>
+        <div><strong>Time</strong><div id="mTime"></div></div>
+        <div><strong>Venue</strong><div id="mVenue"></div></div>
+        <div><strong>City</strong><div id="mCity"></div></div>
+      </div>
+      <p id="mNotes" class="notes"></p>
+
+      <div class="chips" id="mAttendees"></div>
+
+      <div class="modal-actions">
+        <a id="mTickets" class="btn" href="#" target="_blank" rel="noopener">🎫 Tickets / Info</a>
+        <a id="mAlbum" class="btn" href="#" target="_blank" rel="noopener">📸 Open Photo Album</a>
+        <a id="mSheet" class="btn outline" href="#" target="_blank" rel="noopener">📝 Edit this in Google Sheets</a>
+        <a id="mICS" class="btn outline" href="#" download>📅 Add to Calendar (.ics)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor libs -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+  <script>
+    dayjs.extend(dayjs_plugin_utc);
+    dayjs.extend(dayjs_plugin_timezone);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+  <!-- App -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
